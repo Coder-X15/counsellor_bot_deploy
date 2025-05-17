@@ -22,12 +22,12 @@ class Model:
         ])
 
         # Ollama LLM model setup
-        llm = Ollama(model="smollm")  # Change to "llama2" for the larger model
-        output_parser = StrOutputParser()
-        chain = self.prompt | llm | output_parser
+        self.llm = Ollama(model="smollm")  # Change to "llama2" for the larger model
+        self.output_parser = StrOutputParser()
+        self.chain = self.prompt | llm | output_parser
 
     def invoke(self, input_text):
 
         # Display the result in the Streamlit UI
         if input_text:
-            return chain.invoke({"question": input_text})
+            return self.chain.invoke({"question": input_text})
