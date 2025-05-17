@@ -24,7 +24,7 @@ class Model:
         # Ollama LLM model setup
         self.llm = Ollama(model="smollm")  # Change to "llama2" for the larger model
         self.output_parser = StrOutputParser()
-        self.chain = self.prompt | llm | output_parser
+        self.chain = self.prompt | self.llm | self.output_parser
 
     def invoke(self, input_text):
 
