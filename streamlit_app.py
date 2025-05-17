@@ -9,8 +9,8 @@ class StreamlitUIUpdater:
 
     def mainloop(self):
         query = st.text_input("What's on your mind? Drop it off in here :)")
-        st.write(f"<p align = 'left'>User:{query}</p>")
         response = self.model.invoke(query)
+        st.write(f"<p align = 'left'>User:{query}</p>")
         st.write(f"<p align = 'right'>Model:{response}</p>")
 
 if __name__ == "__main__":
@@ -18,5 +18,5 @@ if __name__ == "__main__":
     try:
         while True:
             app.mainloop()
-    except:
-        pass
+    except Exception as e:
+        print(e)
