@@ -1,0 +1,33 @@
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_community.llms import Ollama
+
+import os
+from dotenv import load_dotenv
+
+class Model:
+    def __init__(self):
+        # Load environment variables
+        load_dotenv()
+
+        # Set LangChain environment variables
+        os.environ["LANGCHAIN_TRACING_V2"] = "true"
+        os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+
+        # Create the prompt template
+        self.prompt = ChatPromptTemplate.from_messages([
+            ("system", open('config_prompt.txt').read()),
+            ("user", "Question: {question}")
+        ])
+
+        # Ollama LLM model setup
+        llm = Ollama(model="smollm")  # Change to "llama2" for the larger model
+        output_parser = StrOutputParser()
+        chain = self.prompt | llm | output_parser
+
+    def invoke(self, input_text):
+
+        # Display the result in the Streamlit UI
+        if input_text:
+            return chain.invoke({"question": input_text})
