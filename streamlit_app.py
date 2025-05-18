@@ -1,5 +1,6 @@
 import streamlit as st
 import llm_interface as model
+import random
 
 
 class StreamlitUIUpdater:
@@ -8,7 +9,7 @@ class StreamlitUIUpdater:
         self.model = model.Model()
 
     def mainloop(self):
-        query = st.chat_input("What's on your mind? Drop it off in here :)")
+        query = st.chat_input("What's on your mind? Drop it off in here :)", key = random.random())
         response = self.model.invoke(query)
         if query is not None:
             with st.chat_message("user"):
