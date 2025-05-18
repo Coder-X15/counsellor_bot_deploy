@@ -13,7 +13,7 @@ class Model:
 
         # Set LangChain environment variables
         os.environ["LANGCHAIN_TRACING_V2"] = "true"
-        os.environ["LANGSMITH_ENDPOINT"]="https://api.smith.langchain.com"
+        os.environ["LANGSMITH_ENDPOINT"]=os.getenv("LANGSMITH_ENDPOINT")
         os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
 
         # Create the prompt template
