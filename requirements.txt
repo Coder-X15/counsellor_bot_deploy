@@ -1,7 +1,6 @@
--e --use-feature truststore
 langchain_openai 
 langchain_core
 python-dotenv
 streamlit
 langchain_community
-pip-system-certs
+pip-system-certs --global-option="--use-feature=truststore"
