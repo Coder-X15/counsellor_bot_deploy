@@ -8,10 +8,10 @@ class StreamlitUIUpdater:
         self.model = model.Model()
 
     def mainloop(self):
-        query = st.text_input("What's on your mind? Drop it off in here :)")
+        query = st.chat_input("What's on your mind? Drop it off in here :)")
         response = self.model.invoke(query)
-        st.write(f"<p align = 'left'>User:{query}</p>")
-        st.write(f"<p align = 'right'>Model:{response}</p>")
+        st.write(f"**User:**{query}")
+        st.write(f"**Model:**{response}")
 
 if __name__ == "__main__":
     app = StreamlitUIUpdater()
