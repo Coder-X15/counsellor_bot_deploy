@@ -25,11 +25,12 @@ class Model:
         # In llm_interface.py
         self.prompt = ChatPromptTemplate([
             SystemMessage(content = open('config_prompt.txt').read()),
-            HumanMessage(content="{question}")]
+            # HumanMessage(content="{question}")
+            ]
         )
 
         # Ollama LLM model setup
-        self.llm = OllamaLLM(model="llama2", base_url="http://localhost:11434")  # Change to "llama2" for the larger model
+        self.llm = OllamaLLM(model="smollm", base_url="http://localhost:11434")  # Change to "llama2" for the larger model
         self.output_parser = StrOutputParser()
         self.chain = (
             RunnablePassthrough.assign(question=lambda x: x["question"])
