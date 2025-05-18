@@ -3,4 +3,4 @@ langchain_core
 python-dotenv
 streamlit
 langchain_community
-pip-system-certs --global-option="--use-feature=truststore"
+pip-system-certs --config-settings="--use-feature=truststore"
