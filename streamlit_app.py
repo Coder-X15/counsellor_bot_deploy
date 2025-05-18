@@ -9,7 +9,7 @@ class StreamlitUIUpdater:
         self.model = model.Model()
 
     def mainloop(self):
-        query = st.chat_input("What's on your mind? Drop it off in here :)", key = random.random())
+        query = st.chat_input("What's on your mind? Drop it off in here :)", key = "Input")
         response = self.model.invoke(query)
         if query is not None:
             with st.chat_message("user"):
