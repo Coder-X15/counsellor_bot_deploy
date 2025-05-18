@@ -24,7 +24,6 @@ class StreamlitUIUpdater:
 if __name__ == "__main__":
     app = StreamlitUIUpdater()
     try:
-        while True:
-            app.mainloop()
+        app.mainloop()
     except Exception as e:
         st.write(e.args)
