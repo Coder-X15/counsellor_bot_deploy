@@ -2,6 +2,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_community.llms import Ollama
+from langchain_ollama import OllamaLLM
 
 import os
 from dotenv import load_dotenv
@@ -23,7 +24,7 @@ class Model:
         ])
 
         # Ollama LLM model setup
-        self.llm = Ollama(model="smollm")  # Change to "llama2" for the larger model
+        self.llm = OllamaLLM(model="smollm")  # Change to "llama2" for the larger model
         self.output_parser = StrOutputParser()
         self.chain = self.prompt | self.llm | self.output_parser
 
