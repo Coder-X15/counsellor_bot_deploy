@@ -5,6 +5,7 @@ from langchain_community.llms import Ollama
 from langchain_ollama import OllamaLLM
 
 import os
+import sys
 from dotenv import load_dotenv
 
 class Model:
@@ -24,7 +25,7 @@ class Model:
         ])
 
         # Ollama LLM model setup
-        self.llm = OllamaLLM(model="smollm")  # Change to "llama2" for the larger model
+        self.llm = OllamaLLM(model="smollm", base_url="https://127.0.0.1:11434")  # Change to "llama2" for the larger model
         self.output_parser = StrOutputParser()
         self.chain = self.prompt | self.llm | self.output_parser
 
