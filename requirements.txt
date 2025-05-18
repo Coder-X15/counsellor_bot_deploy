@@ -4,4 +4,3 @@ langchain_ollama
 python-dotenv
 streamlit
 langchain_community
-pip-system-certs
