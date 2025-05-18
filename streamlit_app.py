@@ -10,8 +10,10 @@ class StreamlitUIUpdater:
     def mainloop(self):
         query = st.chat_input("What's on your mind? Drop it off in here :)")
         response = self.model.invoke(query)
-        st.write(f"**User:**{query}")
-        st.write(f"**Model:**{response}")
+        with st.chat_message("user"):
+            st.write(f"**User:**{query}")
+        with st.chat_message("bot"):
+            st.write(f"**Model:**{response}")
 
 if __name__ == "__main__":
     app = StreamlitUIUpdater()
