@@ -10,10 +10,15 @@ class StreamlitUIUpdater:
     def mainloop(self):
         query = st.chat_input("What's on your mind? Drop it off in here :)")
         response = self.model.invoke(query)
-        with st.chat_message("user"):
-            st.write(f"**User:**{query}")
-        with st.chat_message("bot"):
-            st.write(f"**Model:**{response}")
+        if query is not None:
+            with st.chat_message("user"):
+                st.write(query)
+        if response is not None:
+            with st.chat_message("bot"):
+                st.write(response)
+        else:
+            with st.chat_message("bot"):
+                st.write("Error generating message.")
 
 if __name__ == "__main__":
     app = StreamlitUIUpdater()
@@ -21,4 +26,4 @@ if __name__ == "__main__":
         while True:
             app.mainloop()
     except Exception as e:
-        print(e)
+        st.write(e.args)
