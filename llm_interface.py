@@ -25,7 +25,7 @@ class Model:
         ])
 
         # Ollama LLM model setup
-        self.llm = OllamaLLM(model="smollm", base_url="https://127.0.0.1:11434")  # Change to "llama2" for the larger model
+        self.llm = OllamaLLM(model="smollm", base_url="http://localhost:11434")  # Change to "llama2" for the larger model
         self.output_parser = StrOutputParser()
         self.chain = self.prompt | self.llm | self.output_parser
 
