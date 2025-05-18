@@ -28,7 +28,6 @@ class StreamlitUIUpdater:
 
             # step 2: generate response
             response = self.model.invoke(query)
-
             # step 3: add response to chat history
             st.chat_message("assistant").markdown(response)
             st.session_state.messages.append({"role":"assistant","content":response})
